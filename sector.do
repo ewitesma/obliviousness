@@ -1,4 +1,4 @@
-//use "C:\Users\jaredgo\Downloads\04 sectorisk v02.dta"
+
 //Generate binary variables for assigned sector (biz&socbiz combined)
 tab sector2,gen(s)
 
@@ -183,23 +183,6 @@ eststo:logistic guess_gov_right exp_fpo_binary exp_npo_binary exp_gov_binary exp
 esttab using nvsq_table3.rtf, eform se replace
 
 
-//OLD TABLES FOR PAPER
-////GUESS table
-//eststo clear
-//eststo:logistic guess_npo exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary sector_gov sector_npo define_npo2 gender_binary income workind_binary education 
-//eststo:logistic guess_bizsocbiz exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary sector_gov sector_npo define_npo2 gender_binary income workind_binary education
-//eststo:logistic guess_gov exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary sector_gov sector_npo define_npo2 gender_binary income workind_binary education
-//esttab, eform se
-//to export table to word
-//esttab using jabroni.rtf, eform se //eform does odds ratios--exponentiated coefficients-- ; se does standard errors 
-
-//Guess right and guess right by sector Logistic Regressions and Table
-//eststo clear
-//eststo:logistic rightguess exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary sector_gov sector_npo define_npo2 gender_binary income workind_binary education
-//eststo:logistic guess_npo_right exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary define_npo2 gender_binary income workind_binary education if sector2==1
-//eststo:logistic guess_bizsocbiz_right exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary define_npo2 gender_binary income workind_binary education if sector2==2
-//eststo:logistic guess_gov_right exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary define_npo2 gender_binary income workind_binary education if sector2==0
-//esttab using jabroni2.rtf, eform se
 
 
 //Logistic regression results for bussocbiz table 2
@@ -208,5 +191,3 @@ eststo:logistic guess_npo sector_bizsocbiz sector_npo exp_fpo_binary exp_npo_bin
 eststo:logistic guess_bizsocbiz sector_bizsocbiz sector_npo exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary  define_npo2 govs_are_npos2_reversed npos_are_biz2_reversed redcross2 google2_reversed dol2_reversed gender_binary income education 
 eststo:logistic guess_gov sector_bizsocbiz sector_npo exp_fpo_binary exp_npo_binary exp_gov_binary exp_mgmt_binary define_npo2 govs_are_npos2_reversed npos_are_biz2_reversed redcross2 google2_reversed dol2_reversed gender_binary income education 
 esttab, eform se
-//to export table to word
-//esttab using jabroni.rtf, eform se //eform does odds ratios--exponentiated coefficients-- ; se does standard errors 
